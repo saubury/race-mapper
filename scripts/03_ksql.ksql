@@ -17,6 +17,7 @@ select who
 , cast(lat as varchar) ||','||cast(lon as varchar) as LOCATION
 , alt
 , batt
+, speed
 from data_demo_stream ;
 
 

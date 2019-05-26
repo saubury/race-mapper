@@ -18,17 +18,26 @@ For _minimal_ setup
 docker-compose -f docker-compose.yml up -d
 ```
 
-
-# Start Data Gen
+# Demonstration Data
 ```
 cd scripts
-ksql-datagen schema=./01_location_event.avro format=AVRO key=who maxInterval=5000 iterations=10000 topic=LOCATION_EVENT > /dev/null &
+./02_source_demo
 ```
 
-# Run KSQL
+
+# MQTT Data Capture using Source Connect
+Write MQTT data to the `data_mqtt` topic. Ensure the password in `01_source_mqtt` is set
+```
+curl -k -s -S -X PUT -H "Accept: application/json" -H "Content-Type: application/json" --data @./01_source_mqtt.json http://localhost:8083/connectors/01_source_mqtt/config
+```
+
+
+
+
+# KSQL
 ```
 ksql
-ksql> run script '02_ksql.ksql';
+ksql> run script '03_ksql.ksql';
 ```
 
 # Load Dynamic Templates for Elastic
@@ -37,15 +46,14 @@ ksql> run script '02_ksql.ksql';
 ```
 
 # Setup Kafka Connect Elastic Sink
-Write topic `LOCATION_REFINED` to Elastic
+Write topic `runner_status` and `runner_location` to Elastic
 ```
 ./05_set_connect
 ```
 
-# Setup Kafka Connect JDBC Sink
-Write topic `LOCATION_EVENT` to Postgres
+# Kibana Setup
 ```
-curl -k -s -S -X PUT -H "Accept: application/json" -H "Content-Type: application/json" --data @./06_sink_jdbc.json http://localhost:8083/connectors/06_sink_jdbc/config
+06_kibana_export.json
 ```
 
 

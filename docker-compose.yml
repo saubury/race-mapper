@@ -135,18 +135,18 @@ services:
     extra_hosts:
       - "moby:127.0.0.1"
 
-  postgres:
-   image: 'postgres:${PG_VER}'
-   hostname: postgres
-   ports:
-     - "5432:5432"
-   environment:
-     TZ: ${TZ_SET}
-     POSTGRES_USER: postgres
-     POSTGRES_PASSWORD: ${POSTGRES_SRC_PASSWORD}
-     POSTGRES_DB: postgres
-  #    PGDATA: /var/lib/postgresql/data/pgdata
-  #  volumes:
-  #    - ./pgdata/:/var/lib/postgresql/data/pgdata
-   extra_hosts:
-     - "moby:127.0.0.1"
+  # postgres:
+  #  image: 'postgres:${PG_VER}'
+  #  hostname: postgres
+  #  ports:
+  #    - "5432:5432"
+  #  environment:
+  #    TZ: ${TZ_SET}
+  #    POSTGRES_USER: postgres
+  #    POSTGRES_PASSWORD: ${POSTGRES_SRC_PASSWORD}
+  #    POSTGRES_DB: postgres
+  # #    PGDATA: /var/lib/postgresql/data/pgdata
+  # #  volumes:
+  # #    - ./pgdata/:/var/lib/postgresql/data/pgdata
+  #  extra_hosts:
+  #    - "moby:127.0.0.1"

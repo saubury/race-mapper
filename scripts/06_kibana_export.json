@@ -6,12 +6,12 @@
       "title": "Runner Dash",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"panelIndex\":\"1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":8,\"h\":8,\"i\":\"1\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"44528070-7f8b-11e9-b02d-53dea8180a7f\",\"embeddableConfig\":{\"mapCenter\":[-33.86667404412581,151.20800971984866],\"mapZoom\":15}},{\"panelIndex\":\"2\",\"gridData\":{\"x\":10,\"y\":0,\"w\":2,\"h\":3,\"i\":\"2\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"48362dd0-7f8c-11e9-b02d-53dea8180a7f\",\"embeddableConfig\":{\"vis\":{\"defaultColors\":{\"0 - 8\":\"rgb(0,104,55)\",\"8 - 14\":\"rgb(255,255,190)\",\"14 - 18\":\"rgb(165,0,38)\"},\"legendOpen\":false}}},{\"panelIndex\":\"3\",\"gridData\":{\"x\":8,\"y\":3,\"w\":4,\"h\":4,\"i\":\"3\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"cdb5dba0-7f8b-11e9-b02d-53dea8180a7f\"},{\"panelIndex\":\"4\",\"gridData\":{\"x\":8,\"y\":0,\"w\":2,\"h\":3,\"i\":\"4\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"769cd750-7f8c-11e9-b02d-53dea8180a7f\"}]",
-      "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
+      "panelsJSON": "[{\"panelIndex\":\"1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":7,\"h\":9,\"i\":\"1\"},\"embeddableConfig\":{\"mapCenter\":[-33.8617563857832,151.2055313587189],\"mapZoom\":16},\"id\":\"44528070-7f8b-11e9-b02d-53dea8180a7f\",\"type\":\"visualization\",\"version\":\"6.2.4\"},{\"panelIndex\":\"2\",\"gridData\":{\"x\":7,\"y\":0,\"w\":3,\"h\":3,\"i\":\"2\"},\"embeddableConfig\":{\"vis\":{\"defaultColors\":{\"0 - 8\":\"rgb(0,104,55)\",\"14 - 18\":\"rgb(165,0,38)\",\"8 - 14\":\"rgb(255,255,190)\"},\"legendOpen\":false}},\"id\":\"48362dd0-7f8c-11e9-b02d-53dea8180a7f\",\"type\":\"visualization\",\"version\":\"6.2.4\"},{\"panelIndex\":\"3\",\"gridData\":{\"x\":7,\"y\":6,\"w\":5,\"h\":3,\"i\":\"3\"},\"id\":\"cdb5dba0-7f8b-11e9-b02d-53dea8180a7f\",\"type\":\"visualization\",\"version\":\"6.2.4\"},{\"panelIndex\":\"4\",\"gridData\":{\"x\":10,\"y\":0,\"w\":2,\"h\":3,\"i\":\"4\"},\"id\":\"769cd750-7f8c-11e9-b02d-53dea8180a7f\",\"type\":\"visualization\",\"version\":\"6.2.4\"},{\"panelIndex\":\"5\",\"gridData\":{\"x\":7,\"y\":3,\"w\":5,\"h\":3,\"i\":\"5\"},\"id\":\"6c5a5250-7fa9-11e9-871a-5b4ee90de07e\",\"type\":\"visualization\",\"version\":\"6.2.4\"}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[],\"highlightAll\":true,\"version\":true}"
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[],\"highlightAll\":true,\"version\":true}"
       }
     },
     "_meta": {
@@ -29,23 +29,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"runner_location_idx\",\"filter\":[],\"query\":{\"language\":\"lucene\",\"query\":\"\"}}"
-      }
-    },
-    "_meta": {
-      "savedObjectVersion": 2
-    }
-  },
-  {
-    "_id": "cdb5dba0-7f8b-11e9-b02d-53dea8180a7f",
-    "_type": "visualization",
-    "_source": {
-      "title": "grid",
-      "visState": "{\"title\":\"grid\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"DIST_TO_FINISH\",\"customLabel\":\"Dist To Finish (km)\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"significant_terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"WHO.keyword\",\"size\":6,\"customLabel\":\"Runner\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"MIN_SPEED\",\"customLabel\":\"Min Speed (km/h)\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"MAX_SPEED\",\"customLabel\":\"Max Speed (km/h)\"}}]}",
-      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"runner_status_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
       }
     },
     "_meta": {
@@ -76,6 +59,40 @@
       "title": "Num Runners",
       "visState": "{\"title\":\"Num Runners\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":60}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"WHO.keyword\",\"customLabel\":\"Number Runners Tracked\"}}]}",
       "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_status_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "6c5a5250-7fa9-11e9-871a-5b4ee90de07e",
+    "_type": "visualization",
+    "_source": {
+      "title": "Alt Bar",
+      "visState": "{\"title\":\"Alt Bar\",\"type\":\"line\",\"params\":{\"type\":\"line\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Alt (m)\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"line\",\"mode\":\"normal\",\"data\":{\"label\":\"Alt (m)\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"ALT\",\"customLabel\":\"Alt (m)\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EVENT_TS\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"WHO.keyword\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_location_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "cdb5dba0-7f8b-11e9-b02d-53dea8180a7f",
+    "_type": "visualization",
+    "_source": {
+      "title": "grid",
+      "visState": "{\"title\":\"grid\",\"type\":\"table\",\"params\":{\"perPage\":5,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"DIST_TO_FINISH\",\"customLabel\":\"Dist To Finish (km)\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"WHO.keyword\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Runner\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"MIN_SPEED\",\"customLabel\":\"Min Speed (km/h)\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"MAX_SPEED\",\"customLabel\":\"Max Speed (km/h)\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {

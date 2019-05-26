@@ -1,0 +1,13 @@
+{
+    "connector.class" : "io.confluent.connect.mqtt.MqttSourceConnector",
+    "mqtt.server.uri" : "tcp://m12.cloudmqtt.com:10570",
+    "mqtt.password" : "##MQTT_PW##",
+    "mqtt.username" : "kafkauser",
+    "mqtt.topics" : "owntracks/#",
+    "kafka.topic" : "realtime_runner_location",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
+    "tasks.max" : "1",
+    "confluent.topic.bootstrap.servers" : "kafka:29092",
+    "confluent.topic.replication.factor" : "1"
+  }

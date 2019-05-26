@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TOPIC=data_demo
+BROKER=localhost:9092
+FILE=data-whole-json-slim.csv
+
+kafka-topics --bootstrap-server ${BROKER} --create --partitions 1 --replication-factor 1 --topic ${TOPIC}
+
+cat ${FILE} | while read LINE; do 
+  echo ${LINE} | kafka-console-producer --broker-list ${BROKER} --topic ${TOPIC}
+  sleep 0.1
+done

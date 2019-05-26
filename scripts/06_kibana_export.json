@@ -1,0 +1,89 @@
+[
+  {
+    "_id": "c1397cf0-7f8c-11e9-b02d-53dea8180a7f",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Runner Dash",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"panelIndex\":\"1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":8,\"h\":8,\"i\":\"1\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"44528070-7f8b-11e9-b02d-53dea8180a7f\",\"embeddableConfig\":{\"mapCenter\":[-33.86667404412581,151.20800971984866],\"mapZoom\":15}},{\"panelIndex\":\"2\",\"gridData\":{\"x\":10,\"y\":0,\"w\":2,\"h\":3,\"i\":\"2\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"48362dd0-7f8c-11e9-b02d-53dea8180a7f\",\"embeddableConfig\":{\"vis\":{\"defaultColors\":{\"0 - 8\":\"rgb(0,104,55)\",\"8 - 14\":\"rgb(255,255,190)\",\"14 - 18\":\"rgb(165,0,38)\"},\"legendOpen\":false}}},{\"panelIndex\":\"3\",\"gridData\":{\"x\":8,\"y\":3,\"w\":4,\"h\":4,\"i\":\"3\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"cdb5dba0-7f8b-11e9-b02d-53dea8180a7f\"},{\"panelIndex\":\"4\",\"gridData\":{\"x\":8,\"y\":0,\"w\":2,\"h\":3,\"i\":\"4\"},\"version\":\"6.2.4\",\"type\":\"visualization\",\"id\":\"769cd750-7f8c-11e9-b02d-53dea8180a7f\"}]",
+      "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[],\"highlightAll\":true,\"version\":true}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "44528070-7f8b-11e9-b02d-53dea8180a7f",
+    "_type": "visualization",
+    "_source": {
+      "title": "map",
+      "visState": "{\"title\":\"map\",\"type\":\"tile_map\",\"params\":{\"addTooltip\":true,\"heatClusterSize\":1.5,\"isDesaturated\":true,\"legendPosition\":\"bottomright\",\"mapCenter\":[0,0],\"mapType\":\"Shaded Circle Markers\",\"mapZoom\":2,\"wms\":{\"baseLayersAreLoaded\":{},\"enabled\":false,\"options\":{\"format\":\"image/png\",\"transparent\":true},\"selectedTmsLayer\":{\"attribution\":\"<p>Map tiles by <a href=\\\"http://stamen.com\\\">Stamen Design</a>, under <a href=\\\"http://creativecommons.org/licenses/by/3.0\\\">CC BY 3.0</a>. Data by <a href=\\\"http://openstreetmap.org\\\">OpenStreetMap</a>, under ODbL(<a href=\\\"http://www.openstreetmap.org/copyright\\\">http://www.openstreetmap.org/copyright</a>).</p>&#10;\",\"id\":\"TMS in config/kibana.yml\",\"maxZoom\":20,\"minZoom\":0,\"url\":\"https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg\"},\"tmsLayers\":[{\"attribution\":\"<p>Map tiles by <a href=\\\"http://stamen.com\\\">Stamen Design</a>, under <a href=\\\"http://creativecommons.org/licenses/by/3.0\\\">CC BY 3.0</a>. Data by <a href=\\\"http://openstreetmap.org\\\">OpenStreetMap</a>, under ODbL(<a href=\\\"http://www.openstreetmap.org/copyright\\\">http://www.openstreetmap.org/copyright</a>).</p>&#10;\",\"id\":\"TMS in config/kibana.yml\",\"maxZoom\":20,\"minZoom\":0,\"url\":\"https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg\"},{\"attribution\":\"<p>&#169; <a href=\\\"https://www.openstreetmap.org/copyright\\\">OpenStreetMap contributors</a>|<a href=\\\"https://openmaptiles.org\\\">OpenMapTiles</a>|<a href=\\\"https://www.maptiler.com\\\">MapTiler</a>|<a href=\\\"https://www.elastic.co/elastic-maps-service\\\">Elastic Maps Service</a></p>&#10;\",\"id\":\"road_map\",\"maxZoom\":10,\"minZoom\":0,\"subdomains\":[],\"url\":\"https://tiles.maps.elastic.co/v2/default/{z}/{x}/{y}.png?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=6.2.4\"}]}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"_type\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"LOCATION\",\"autoPrecision\":true,\"isFilteredByCollar\":true,\"useGeocentroid\":true,\"precision\":7}}]}",
+      "uiStateJSON": "{\"mapCenter\":[-33.858620339815644,151.21009111404422],\"mapZoom\":15}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_location_idx\",\"filter\":[],\"query\":{\"language\":\"lucene\",\"query\":\"\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "cdb5dba0-7f8b-11e9-b02d-53dea8180a7f",
+    "_type": "visualization",
+    "_source": {
+      "title": "grid",
+      "visState": "{\"title\":\"grid\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"DIST_TO_FINISH\",\"customLabel\":\"Dist To Finish (km)\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"significant_terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"WHO.keyword\",\"size\":6,\"customLabel\":\"Runner\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"MIN_SPEED\",\"customLabel\":\"Min Speed (km/h)\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"MAX_SPEED\",\"customLabel\":\"Max Speed (km/h)\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_status_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "48362dd0-7f8c-11e9-b02d-53dea8180a7f",
+    "_type": "visualization",
+    "_source": {
+      "title": "Avg Speed",
+      "visState": "{\"title\":\"Avg Speed\",\"type\":\"gauge\",\"params\":{\"type\":\"gauge\",\"addTooltip\":true,\"addLegend\":true,\"isDisplayWarning\":false,\"gauge\":{\"verticalSplit\":false,\"extendRange\":true,\"percentageMode\":false,\"gaugeType\":\"Arc\",\"gaugeStyle\":\"Full\",\"backStyle\":\"Full\",\"orientation\":\"vertical\",\"colorSchema\":\"Green to Red\",\"gaugeColorMode\":\"Labels\",\"colorsRange\":[{\"from\":0,\"to\":8},{\"from\":8,\"to\":14},{\"from\":14,\"to\":18}],\"invertColors\":false,\"labels\":{\"show\":true,\"color\":\"black\"},\"scale\":{\"show\":true,\"labels\":false,\"color\":\"#333\"},\"type\":\"meter\",\"style\":{\"bgWidth\":0.9,\"width\":0.9,\"mask\":false,\"bgMask\":false,\"maskBars\":50,\"bgFill\":\"#eee\",\"bgColor\":false,\"subText\":\"\",\"fontSize\":60,\"labelColor\":true}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"MAX_SPEED\",\"customLabel\":\"Avg Speed (km/h)\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0 - 8\":\"rgb(0,104,55)\",\"8 - 14\":\"rgb(255,255,190)\",\"14 - 18\":\"rgb(165,0,38)\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_status_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "769cd750-7f8c-11e9-b02d-53dea8180a7f",
+    "_type": "visualization",
+    "_source": {
+      "title": "Num Runners",
+      "visState": "{\"title\":\"Num Runners\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":60}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"WHO.keyword\",\"customLabel\":\"Number Runners Tracked\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"runner_status_idx\",\"filter\":[],\"query\":{\"query\":\"\",\"language\":\"lucene\"}}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  }
+]

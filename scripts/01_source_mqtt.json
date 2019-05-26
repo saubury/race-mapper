@@ -4,7 +4,7 @@
     "mqtt.password" : "##MQTT_PW##",
     "mqtt.username" : "kafkauser",
     "mqtt.topics" : "owntracks/#",
-    "kafka.topic" : "realtime_runner_location",
+    "kafka.topic" : "data_mqtt",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
     "tasks.max" : "1",

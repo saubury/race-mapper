@@ -21,30 +21,3 @@ select who
 from data_demo_stream ;
 
 
-
--- MQTT stuff below
-
-create stream realtime_runner_location_stream  (tid varchar, batt INTEGER, lon DOUBLE, lat DOUBLE, tst BIGINT, alt INTEGER) 
-with (kafka_topic = 'realtime_runner_location', value_format='JSON');
-
-
-
-
-create stream mqtt_demo_stream  (who varchar, batt INTEGER, lon DOUBLE, lat DOUBLE, tst BIGINT, alt INTEGER) with (kafka_topic = 'mqtt-demo', value_format='JSON');
-
-
-create stream runner_location with (value_format='JSON') as
-select split(rowkey, '/')[2] as who
-, tst as event_time
-, cast(lat as varchar) ||','||cast(lon as varchar) as LOCATION
-, alt
-, batt
-from realtime_runner_location_stream;
-
-create stream mqtt_demo_stream  (who varchar, batt INTEGER, lon DOUBLE, lat DOUBLE, tst BIGINT, alt INTEGER) with (kafka_topic = 'mqtt-demo', value_format='JSON');
-
-insert into runner_location select who, tst as event_time, cast(lat as varchar) ||','||cast(lon as varchar) as LOCATION, alt, batt from mqtt_demo_stream;
-
-create stream silly_stream  (who varchar, batt INTEGER, lon DOUBLE, lat DOUBLE, timeepoc BIGINT, alt INTEGER) with (kafka_topic = 'silly', value_format='JSON');
-
-insert into runner_location select who, timeepoc as tst as event_time, cast(lat as varchar) ||','||cast(lon as varchar) as LOCATION, alt, batt from silly_stream;

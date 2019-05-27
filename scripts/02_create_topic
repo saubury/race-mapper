@@ -2,6 +2,9 @@
 
 TOPIC=data_demo
 ZOOKEEPER=localhost:2181
+BROKER=localhost:9092
+FILE=07_source_demo.csv
 
 kafka-topics --if-not-exists --zookeeper ${ZOOKEEPER} --create --partitions 1 --replication-factor 1 --topic ${TOPIC}
 
+head -1 ${FILE} | kafka-console-producer --broker-list ${BROKER} --topic ${TOPIC}

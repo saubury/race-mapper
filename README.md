@@ -31,19 +31,17 @@ If you want to have a play with demonstration data (and not bother with phone se
 
 If you want to setup the _entire_ project, you will need a to start with [Phone Setup](/docs/phone.md) 
 
-# Demonstration Data
+# Create topics
 ```
 cd scripts
-./02_source_demo  > /dev/null 2>&1 &
+./02_create_topic
 ```
-
-
-
 
 # KSQL
 ```
 ksql
 ksql> run script '03_ksql.ksql';
+exit;
 ```
 
 # Load Dynamic Templates for Elastic
@@ -95,3 +93,8 @@ Write topic `runner_status` and `runner_location` to Elastic
 
 - Open http://localhost:5601/app/kibana#/dashboards
 - Click on _Runner Dash_
+
+# Demonstration Data
+```
+./07_demo_run_data
+```

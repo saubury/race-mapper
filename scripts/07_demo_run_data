@@ -2,10 +2,7 @@
 
 TOPIC=data_demo
 BROKER=localhost:9092
-ZOOKEEPER=localhost:2181
-FILE=02_source_demo.csv
-
-kafka-topics --if-not-exists --zookeeper ${ZOOKEEPER} --create --partitions 1 --replication-factor 1 --topic ${TOPIC}
+FILE=07_source_demo.csv
 
 cat ${FILE} | while read LINE; do 
   echo ${LINE} | kafka-console-producer --broker-list ${BROKER} --topic ${TOPIC}

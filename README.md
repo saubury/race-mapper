@@ -6,9 +6,11 @@
 
 ## Architectural overview
 
+![Architecture](/docs/race-mapper-arch.png)
+
 Race mapper for displaying participant progress and location - Kafka, KSQL, Kibana and MQTT based integration
 
-![Architecture](/docs/kibana-capture.png)
+![Kibana](/docs/kibana-capture.png)
 
 
 

@@ -5,6 +5,7 @@ version: '3'
 services:
   zookeeper:
     image: "confluentinc/cp-zookeeper:${CONF_VER}"
+    container_name: zookeeper
     ports:
       - 2181:2181
     # volumes:
@@ -17,6 +18,7 @@ services:
 
   kafka:
     image: "confluentinc/cp-enterprise-kafka:${CONF_VER}"
+    container_name: kafka
     depends_on:
       - zookeeper
     # volumes:
@@ -38,9 +40,12 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100
       CONFLUENT_METRICS_ENABLE: 'false'
+    volumes:
+      - ./scripts:/data/scripts/
 
   schema-registry:
     image: "confluentinc/cp-schema-registry:${CONF_VER}"
+    container_name: schema-registry
     ports:
       - 8081:8081  
     depends_on:
@@ -59,6 +64,7 @@ services:
 
   ksql-server:
     image: confluentinc/cp-ksql-server:${CONF_VER}
+    container_name: ksql-server
     ports:
       - '8088:8088'    
     depends_on:
@@ -76,7 +82,18 @@ services:
       - ./scripts:/scripts
       - ./ext:/etc/ksql/ext
 
+  ksql-cli:
+    image: confluentinc/cp-ksql-cli:${CONF_VER}
+    container_name: ksql-cli
+    depends_on:
+      - ksql-server
+    entrypoint: /bin/sh
+    tty: true
+    volumes:
+      - ./scripts:/data/scripts/
+
   kafka-connect:
+    container_name: kafka-connect
     image: confluentinc/cp-kafka-connect:${CONF_VER}
     depends_on:
       - zookeeper
@@ -108,6 +125,7 @@ services:
       - ./confluentinc-kafka-connect-mqtt:/usr/share/java/confluentinc-kafka-connect-mqtt
 
   elasticsearch:
+    container_name: elasticsearch
     image: 'docker.elastic.co/elasticsearch/elasticsearch-oss:${ELST_VER}'
     hostname: elasticsearch
     ports:
@@ -122,6 +140,7 @@ services:
       - "moby:127.0.0.1"
 
   kibana:
+    container_name: kibana
     image: 'docker.elastic.co/kibana/kibana-oss:${ELST_VER}'
     volumes:
       - ./config/kibana.yml:/usr/share/kibana/config/kibana.yml
@@ -132,8 +151,10 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
-    extra_hosts:
-      - "moby:127.0.0.1"
+    environment:
+      xpack.security.enabled: "false"
+      discovery.type: "single-node"
+
 
   # postgres:
   #  image: 'postgres:${PG_VER}'

@@ -43,4 +43,3 @@ topic_to_elastic () {
 topic_to_elastic runner_location
 topic_to_elastic runner_status
 
-

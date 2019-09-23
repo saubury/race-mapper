@@ -40,9 +40,17 @@ cd scripts
 ```
 
 # KSQL
+
+Get a KSQL CLI session:
+```
+docker exec -it ksql-cli bash -c 'echo -e "\n\n⏳ Waiting for KSQL to be available before launching CLI\n"; while : ; do curl_status=$(curl -s -o /dev/null -w %{http_code} http://ksql-server:8088/info) ; echo -e $(date) " KSQL server listener HTTP state: " $curl_status " (waiting for 200)" ; if [ $curl_status -eq 200 ] ; then  break ; fi ; sleep 5 ; done ; ksql http://ksql-server:8088'
+```
+
+Run the KSQL script: 
+
 ```
 ksql
-ksql> run script '03_ksql.ksql';
+ksql> run script '/data/scripts/03_ksql.ksql';
 exit;
 ```
 
@@ -57,32 +65,28 @@ Write topic `runner_status` and `runner_location` to Elastic
 ./05_kafka_to_elastic_sink
 ```
 
+Check connector status: 
+
+```
+curl -s "http://localhost:8083/connectors?expand=info&expand=status" | \
+         jq '. | to_entries[] | [ .value.info.type, .key, .value.status.connector.state,.value.status.tasks[].state,.value.info.config."connector.class"]|join(":|:")' | \
+         column -s : -t| sed 's/\"//g'| sort
+```
+
+Should be: 
+
+```
+sink  |  es_sink_RUNNER_LOCATION  |  RUNNING  |  RUNNING  |  io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+sink  |  es_sink_RUNNER_STATUS    |  RUNNING  |  RUNNING  |  io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+```
+
 # Kibana 
 
 ## Kibana Index Setup
 
-- Navigate to http://localhost:5601/app/kibana#/management/kibana/index 
-
-
-![Kibana Step 1](/docs/kibana-01.png)
-
-- At _Step 1 of 2: Define index pattern_  
-  - Enter `runner_location*` for _Index pattern_
-  - Click _Next step_
-
-
-![Kibana Step 2](/docs/kibana-02.png)
-
-- At _Step 2 of 2: Configure settings_ 
-  - Enter `EVENT_TS`  for _Time Filter field name_
-  - Expand _Hide advanced options_
-  - Enter `runner_location_idx` for _Custom index pattern ID_
-  - Click _Create index pattern_
-
-
-- Repeat these steps to create a second index, this time using 
-  -   `runner_status*` for _Index pattern_ 
-  -  Enter `runner_status_idx` for _Custom index pattern ID_
+```
+./06_create_kibana_metadata.sh
+```
 
 ## Kibana Dashboard Import
 
@@ -98,5 +102,5 @@ Write topic `runner_status` and `runner_location` to Elastic
 
 # Demonstration Data
 ```
-./07_demo_run_data
+docker exec kafka /data/scripts/07_demo_run_data
 ```
